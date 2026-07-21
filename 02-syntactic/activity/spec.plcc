@@ -1,0 +1,31 @@
+skip WHITESPACE '\s+'
+skip COMMENT '#.*'
+
+# Reserved words must come before IDENT
+token IF    'if'
+token THEN  'then'
+token ELSE  'else'
+token ASSGN '='
+token EOP   '\.'
+
+token IDENT    '[A-Za-z%$@][_A-Za-z%$@]*'
+token INTEGER  '[0-9]+'
+
+%
+
+# This grammar is ambiguous — the LL(1) parser cannot tell apart
+# an if-statement with and without an else clause.
+# Fix it by adding an ENDIF token (add the token above) and requiring
+# every if-statement to end with it.
+
+<Prog>            ::= <Stmts:stmts> EOP
+<Stmts>           **= <Stmt:stmt>
+
+<Stmt:Assign>     ::= <IDENT:ident> ASSGN <Expr:expr>
+
+<Stmt:IfStmt>     ::= IF <Expr:expr> THEN <Stmt:stmt> <ElsePart:elsePart>
+<ElsePart:EPnada> ::=
+<ElsePart:EPelse> ::= ELSE <Stmt:stmt>
+
+<Expr:Var>        ::= <IDENT:ident>
+<Expr:Const>      ::= <INTEGER:integer>

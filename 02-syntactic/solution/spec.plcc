@@ -1,0 +1,27 @@
+skip WHITESPACE '\s+'
+skip COMMENT '#.*'
+
+# Reserved words must come before IDENT
+token IF    'if'
+token THEN  'then'
+token ELSE  'else'
+token ENDIF 'endif'
+token ASSGN '='
+token EOP   '\.'
+
+token IDENT    '[A-Za-z%$@][_A-Za-z%$@]*'
+token INTEGER  '[0-9]+'
+
+%
+
+<Prog>            ::= <Stmts:stmts> EOP
+<Stmts>           **= <Stmt:stmt>
+
+<Stmt:Assign>     ::= <IDENT:ident> ASSGN <Expr:expr>
+
+<Stmt:IfStmt>     ::= IF <Expr:expr> THEN <Stmt:stmt> <ElsePart:elsePart> ENDIF
+<ElsePart:EPnada> ::=
+<ElsePart:EPelse> ::= ELSE <Stmt:stmt>
+
+<Expr:Var>        ::= <IDENT:ident>
+<Expr:Const>      ::= <INTEGER:integer>
