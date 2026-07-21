@@ -40,19 +40,13 @@ Try parsing the test program:
 plcc-parse -s activity/spec.plcc < activity/testprog.txt
 ```
 
-If the grammar is valid LL(1), a successful parse prints `OK`. An ambiguous
-or incorrect grammar will produce an error message.
+In plcc-ng, `plcc-parse` always prints the parse tree. A successful parse
+shows the tree structure; an ambiguous or incorrect grammar produces an error.
 
 Parse interactively (type one program at a time, press Ctrl-D to finish):
 
 ```
 plcc-parse -s activity/spec.plcc
-```
-
-To trace the parse step-by-step (useful for debugging):
-
-```
-plcc-parse -s activity/spec.plcc -t < activity/testprog.txt
 ```
 
 ## Check your work

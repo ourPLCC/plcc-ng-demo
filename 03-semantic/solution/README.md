@@ -43,17 +43,11 @@ plcc-scan -s python/spec.plcc
 
 ## Step 2: Parse — structure
 
-`plcc-parse` checks that the token stream matches the grammar and prints `OK`
-if it does.
+`plcc-parse` checks that the token stream matches the grammar and prints the
+parse tree if it succeeds.
 
 ```
 plcc-parse -s python/spec.plcc < python/testprog.txt
-```
-
-Trace the parse tree being built with `-t`:
-
-```
-plcc-parse -s python/spec.plcc -t < python/testprog.txt
 ```
 
 Parse interactively:

@@ -11,7 +11,8 @@ cd 02-syntactic/solution
 plcc-parse -s spec.plcc < testprog.txt
 ```
 
-A successful parse prints `OK`.
+In plcc-ng, `plcc-parse` always prints the parse tree. You'll see the
+tree structure for each statement in the program.
 
 ## Try it interactively
 
@@ -26,20 +27,12 @@ a = 1
 if a then a = 2 endif
 .
 ```
-(Ctrl-D) → `OK`
+(Ctrl-D) → parse tree output
 
 ```
 if a then a = 2
 .
 ```
 (Ctrl-D) → error (missing `endif`)
-
-## Trace the parse
-
-Add `-t` to see the parse tree being built step by step:
-
-```
-plcc-parse -s spec.plcc -t < testprog.txt
-```
 
 Ready for semantics? See `03-semantic/README.md`.
