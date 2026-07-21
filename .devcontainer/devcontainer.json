@@ -1,0 +1,4 @@
+{
+  "name": "plcc-ng Demo",
+  "image": "ghcr.io/ourplcc/devcontainers/plcc-ng:1"
+}
