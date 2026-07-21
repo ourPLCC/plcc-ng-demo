@@ -34,6 +34,8 @@ keyword `endif`. This makes the nesting structure explicit and unambiguous.
 
 Try parsing the test program:
 
+> **Note:** The test program already uses `endif`. The starting spec will fail on it — that's expected. Fix the spec first, then run the test.
+
 ```
 plcc-parse -s activity/spec.plcc < activity/testprog.txt
 ```

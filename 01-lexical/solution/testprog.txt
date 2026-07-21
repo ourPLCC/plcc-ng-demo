@@ -4,6 +4,7 @@ $%
 @@%$%Hi_there
 
 Skip_the_underscore
+# _rest_is_OK starts with _, which is not a valid IDENT first character
 _rest_is_OK
 
 # Test the new tokens.

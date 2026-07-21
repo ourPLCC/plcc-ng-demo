@@ -18,13 +18,14 @@ cd 01-lexical/solution
 plcc-scan -s spec.plcc < testprog.txt
 ```
 
-You should see output like:
+You should see output like (excerpt — actual output contains earlier tokens first):
 ```
-INTEGER(0)
+IDENT(Hi_there)
+...
 IF(if)
 ELSE(else)
-...
 IDENT(biff)
+INTEGER(0)
 ...
 ERROR(49.68)
 ```
