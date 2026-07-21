@@ -1,0 +1,73 @@
+skip WHITESPACE '\s+'
+skip COMMENT '#.*'
+
+token ADDOP '\+'
+token SUBOP '\-'
+token MULOP '\*'
+token DIVOP '/'
+token UMIOP '_'
+
+token INTEGER '[0-9]+'
+
+%
+
+<Expr:Const>  ::= <INTEGER:integer>
+<Expr:Add>    ::= ADDOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Sub>    ::= SUBOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Mul>    ::= MULOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Div>    ::= DIVOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Umi>    ::= UMIOP <Expr:opnd1>
+
+%
+
+Java
+
+Expr
+%%%
+    public void _run() {
+        System.out.println(this.evaluate());
+    }
+    public abstract int evaluate();
+%%%
+
+Const
+%%%
+    public int evaluate() {
+        return Integer.parseInt(integer.toString());
+    }
+%%%
+
+Add
+%%%
+    public int evaluate() {
+        return opnd1.evaluate() + opnd2.evaluate();
+    }
+%%%
+
+Sub
+%%%
+    public int evaluate() {
+        return opnd1.evaluate() - opnd2.evaluate();
+    }
+%%%
+
+Mul
+%%%
+    public int evaluate() {
+        return opnd1.evaluate() * opnd2.evaluate();
+    }
+%%%
+
+Div
+%%%
+    public int evaluate() {
+        return opnd1.evaluate() / opnd2.evaluate();
+    }
+%%%
+
+Umi
+%%%
+    public int evaluate() {
+        return -opnd1.evaluate();
+    }
+%%%
