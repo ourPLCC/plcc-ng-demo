@@ -1,0 +1,21 @@
+# Test existing token definitions.
+%
+$%
+@@%$%Hi_there
+
+Skip_the_underscore
+_rest_is_OK
+
+# Test the tokens you add.
+if
+else
+biff welser ifato elseanor
+0
+012
+1537
+
+Bad_decimal_point_coming_up
+49.68
+
+Is this OK
+13fourteen15sixteen # Is whitespace necessary?

@@ -1,0 +1,13 @@
+skip WHITESPACE '\s+'
+
+# Skip comments: lines starting with '#'
+skip COMMENT '#.*'
+
+token IDENT '[A-Za-z%$@][_A-Za-z%$@]*'
+
+# Add your new token definitions below:
+# - INTEGER: unsigned decimal integers
+# - IF: the reserved word "if"
+# - ELSE: the reserved word "else"
+#
+# IMPORTANT: Place IF and ELSE before IDENT so reserved words take priority.

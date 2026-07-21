@@ -1,0 +1,10 @@
+skip WHITESPACE '\s+'
+
+# Skip comments: lines starting with '#'
+skip COMMENT '#.*'
+
+token INTEGER '\d+'
+token IF 'if'
+token ELSE 'else'
+
+token IDENT '[A-Za-z%$@][_A-Za-z%$@]*'
