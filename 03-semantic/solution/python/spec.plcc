@@ -1,0 +1,68 @@
+skip WHITESPACE '\s+'
+skip COMMENT '#.*'
+
+token ADDOP '\+'
+token SUBOP '\-'
+token MULOP '\*'
+token DIVOP '/'
+token UMIOP '_'
+
+token INTEGER '[0-9]+'
+
+%
+
+<Expr:Const>  ::= <INTEGER:integer>
+<Expr:Add>    ::= ADDOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Sub>    ::= SUBOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Mul>    ::= MULOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Div>    ::= DIVOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Umi>    ::= UMIOP <Expr:opnd1>
+
+%
+
+Python
+
+Expr
+%%%
+def _run(self):
+    print(self.evaluate())
+
+def evaluate(self):
+    raise NotImplementedError
+%%%
+
+Const
+%%%
+def evaluate(self):
+    return int(self.integer.lexeme)
+%%%
+
+Add
+%%%
+def evaluate(self):
+    return self.opnd1.evaluate() + self.opnd2.evaluate()
+%%%
+
+Sub
+%%%
+def evaluate(self):
+    return self.opnd1.evaluate() - self.opnd2.evaluate()
+%%%
+
+Mul
+%%%
+def evaluate(self):
+    return self.opnd1.evaluate() * self.opnd2.evaluate()
+%%%
+
+Div
+%%%
+def evaluate(self):
+    return self.opnd1.evaluate() // self.opnd2.evaluate()
+%%%
+
+Umi
+%%%
+def evaluate(self):
+    return -self.opnd1.evaluate()
+%%%
