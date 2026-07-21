@@ -1,0 +1,76 @@
+skip WHITESPACE '\s+'
+skip COMMENT '#.*'
+
+token ADDOP '\+'
+token SUBOP '\-'
+token MULOP '\*'
+token DIVOP '/'
+token UMIOP '_'
+
+token INTEGER '[0-9]+'
+
+%
+
+<Expr:Const>  ::= <INTEGER:integer>
+<Expr:Add>    ::= ADDOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Sub>    ::= SUBOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Mul>    ::= MULOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Div>    ::= DIVOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Umi>    ::= UMIOP <Expr:opnd1>
+
+%
+
+JavaScript
+
+Expr
+%%%
+_run() {
+    console.log(this.evaluate());
+}
+
+evaluate() {
+    throw new Error('Not implemented');
+}
+%%%
+
+Const
+%%%
+evaluate() {
+    return parseInt(this.integer.toString());
+}
+%%%
+
+Add
+%%%
+evaluate() {
+    return this.opnd1.evaluate() + this.opnd2.evaluate();
+}
+%%%
+
+Sub
+%%%
+evaluate() {
+    return this.opnd1.evaluate() - this.opnd2.evaluate();
+}
+%%%
+
+Mul
+%%%
+evaluate() {
+    return this.opnd1.evaluate() * this.opnd2.evaluate();
+}
+%%%
+
+Div
+%%%
+evaluate() {
+    return Math.trunc(this.opnd1.evaluate() / this.opnd2.evaluate());
+}
+%%%
+
+Umi
+%%%
+evaluate() {
+    return -this.opnd1.evaluate();
+}
+%%%
