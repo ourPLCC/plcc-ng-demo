@@ -95,8 +95,8 @@ All three should produce the same output:
 6
 90
 -90
-63
 -63
+63
 ```
 
 Run interactively to try your own expressions:
