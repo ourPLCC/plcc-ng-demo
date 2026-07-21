@@ -1,0 +1,50 @@
+skip WHITESPACE '\s+'
+skip COMMENT '#.*'
+
+# Why do the first three patterns need backslash escapes?
+token ADDOP '\+'
+token SUBOP '\-'
+token MULOP '\*'
+token DIVOP '/'
+# Add a new token for unary negation (_) here.
+
+token INTEGER '[0-9]+'
+
+%
+
+<Expr:Const>  ::= <INTEGER:integer>
+<Expr:Add>    ::= ADDOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Sub>    ::= SUBOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Mul>    ::= MULOP <Expr:opnd1> <Expr:opnd2>
+<Expr:Div>    ::= DIVOP <Expr:opnd1> <Expr:opnd2>
+# Add a grammar rule for unary negation here.
+
+%
+
+Python
+
+Expr
+%%%
+def _run(self):
+    print(self.evaluate())
+
+# This dummy implementation lets you test before all classes are complete.
+# Replace it with `raise NotImplementedError` once you're ready.
+def evaluate(self):
+    return 999
+%%%
+
+Const
+%%%
+def evaluate(self):
+    return int(self.integer.lexeme)
+%%%
+
+Add
+%%%
+def evaluate(self):
+    return self.opnd1.evaluate() + self.opnd2.evaluate()
+%%%
+
+# Complete Sub, Mul, and Div below following the Add pattern.
+# Then add support for unary negation.

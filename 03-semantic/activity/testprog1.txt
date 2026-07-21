@@ -1,0 +1,7 @@
+# These should work correctly right away.
+3
++ 3 9
+
+# These will return 999 until you implement Sub, Mul, and Div.
+- 2 1
+* / 45 5 - 3 10
