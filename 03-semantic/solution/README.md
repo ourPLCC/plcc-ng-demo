@@ -21,13 +21,13 @@ cd 03-semantic/solution
 plcc-scan -s python/spec.plcc < python/testprog.txt
 ```
 
-You'll see each token printed individually:
+Each token is printed as `source:line:col TOKEN 'lexeme'` (where `-` means stdin):
 
 ```
-INTEGER(3)
-ADDOP(+)
-INTEGER(3)
-INTEGER(9)
+-:1:1 INTEGER '3'
+-:2:1 ADDOP '+'
+-:2:3 INTEGER '3'
+-:2:5 INTEGER '9'
 ...
 ```
 

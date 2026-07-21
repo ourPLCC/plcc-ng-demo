@@ -18,16 +18,20 @@ cd 01-lexical/solution
 plcc-scan -s spec.plcc < testprog.txt
 ```
 
-You should see output like (excerpt — actual output contains earlier tokens first):
+Each token is printed as `source:line:col TOKEN 'lexeme'` (where `-` means stdin).
+You should see output like:
 ```
-IDENT(Hi_there)
+-:2:1 IDENT '%'
+-:3:1 IDENT '$%'
+-:4:1 IDENT '@@%$%Hi_there'
 ...
-IF(if)
-ELSE(else)
-IDENT(biff)
-INTEGER(0)
+-:10:1 IF 'if'
+-:11:1 ELSE 'else'
+-:12:1 IDENT 'biff'
 ...
-ERROR(49.68)
+-:18:1 INTEGER '49'
+-:18:3 ERROR '.'
+-:18:4 INTEGER '68'
 ```
 
 ## Try it interactively
