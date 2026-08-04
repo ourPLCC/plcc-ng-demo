@@ -26,7 +26,7 @@ Python
 Expr
 %%%
 def _run(self):
-    print(self.evaluate())
+    return str(self.evaluate())
 
 # This dummy implementation lets you test before all classes are complete.
 # Replace it with `raise NotImplementedError` once you're ready.
