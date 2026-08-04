@@ -36,7 +36,8 @@ plcc-scan -s activity/spec.plcc < activity/testprog.txt
 ```
 
 `plcc-scan` prints each recognized token on its own line. Anything that
-doesn't match a token is reported as an `ERROR`.
+doesn't match a token is reported as an `error: unrecognized character`
+diagnostic, and scanning continues with the next character.
 
 ## Check your work
 

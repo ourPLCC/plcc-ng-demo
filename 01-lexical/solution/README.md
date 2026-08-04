@@ -25,13 +25,13 @@ You should see output like:
 -:3:1 IDENT '$%'
 -:4:1 IDENT '@@%$%Hi_there'
 ...
--:10:1 IF 'if'
--:11:1 ELSE 'else'
--:12:1 IDENT 'biff'
+-:11:1 IF 'if'
+-:12:1 ELSE 'else'
+-:13:1 IDENT 'biff'
 ...
--:18:1 INTEGER '49'
--:18:3 ERROR '.'
--:18:4 INTEGER '68'
+-:19:1 INTEGER '49'
+-:19:3: error: unrecognized character '.'
+-:19:4 INTEGER '68'
 ```
 
 ## Try it interactively

@@ -25,7 +25,7 @@ JavaScript
 Expr
 %%%
 _run() {
-    console.log(this.evaluate());
+    return String(this.evaluate());
 }
 
 evaluate() {

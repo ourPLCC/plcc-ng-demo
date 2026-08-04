@@ -24,8 +24,8 @@ Java
 
 Expr
 %%%
-    public void _run() {
-        System.out.println(this.evaluate());
+    public String _run() {
+        return String.valueOf(this.evaluate());
     }
     public abstract int evaluate();
 %%%
