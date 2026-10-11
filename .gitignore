@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 plcc-ng/
+
+# Implementation plans live in the worktree and are never committed
+.plans/
